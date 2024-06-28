@@ -31,6 +31,12 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
+		 <!-- Dependencia para MySQL (o el gestor de base de datos que estés usando) -->
+    <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <scope>runtime</scope>
+    </dependency>
 	</dependencies>
 
 	<build>
