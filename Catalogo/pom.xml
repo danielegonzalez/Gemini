@@ -31,12 +31,17 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
-		 <!-- Dependencia para MySQL (o el gestor de base de datos que estés usando) -->
-    <dependency>
+		<dependency>
         <groupId>mysql</groupId>
         <artifactId>mysql-connector-java</artifactId>
         <version>8.0.26</version> <!-- Añadir la versión aquí -->
         <scope>runtime</scope>
+    </dependency>
+    <!-- Dependencia para HikariCP -->
+    <dependency>
+        <groupId>com.zaxxer</groupId>
+        <artifactId>HikariCP</artifactId>
+        <version>5.0.1</version>
     </dependency>
 	</dependencies>
 
