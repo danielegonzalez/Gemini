@@ -34,7 +34,7 @@ jobs:
         uses: actions/cache@v1
         with:
           path: ~/.m2
-          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          key: ${{ runner.os }}-m2-${{ hashFiles('Catalogo/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
 
       - name: Build and analyze with SonarQube
@@ -42,5 +42,5 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         run: |
-          cd Gemini  # Cambia al directorio donde está el archivo pom.xml
+          cd Catalogo  # Cambia al directorio donde está el archivo pom.xml
           mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Gemini -Dsonar.projectName='Gemini'
