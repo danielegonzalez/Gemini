@@ -43,4 +43,11 @@ jobs:
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         run: |
           cd Catalogo  # Cambia al directorio donde está el archivo pom.xml
-          mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Gemini -Dsonar.projectName='Gemini'
+          mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Gemini -Dsonar.projectName='Gemini' -X -e
+
+      - name: Archive test results
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-results
+          path: Catalogo/target/surefire-reports/
