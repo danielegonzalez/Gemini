@@ -37,13 +37,16 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('Catalogo/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
 
+      - name: Print environment variables
+        run: env
+
       - name: Build and analyze with SonarQube
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         run: |
           cd Catalogo  # Cambia al directorio donde está el archivo pom.xml
-          mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Gemini -Dsonar.projectName='Gemini' -X -e
+          mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Gemini -Dsonar.projectName='Gemini' -Dsonar.host.url=$SONAR_HOST_URL -X -e
 
       - name: Archive test results
         if: always()
